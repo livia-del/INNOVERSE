@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOIR SPACE｜情境式廚房配置</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#131516; --bg2:#181b1c; --panel:#1e2223; --card:#252a2c; --card2:#2c3234;
+  --line:#4a5254; --line-strong:#6b7476;
+  --gold:#d4ad72; --gold-dark:#b48f58; --gold-soft:rgba(212,173,114,.16);
+  --text:#f1ece2; --text2:#d6cfc1; --muted:#a9a194;
+  --cook:#9a7254; --work:#5f7884; --dine:#86684a; --storage:#56685a;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans TC",system-ui,sans-serif;font-size:18px;line-height:1.65}
+h1,h2,h3,.serif{font-family:"Noto Serif TC",serif}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(19,21,22,.94);backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+.logo-mark{width:44px;height:44px;border-radius:50%;background:var(--gold);color:#1a1a1a;display:grid;place-items:center;font-family:"Noto Serif TC",serif;font-weight:900;font-size:22px}
+.logo b{font-family:"Noto Serif TC",serif;font-size:22px;letter-spacing:.12em;display:block;line-height:1.1}
+.logo small{font-size:11px;letter-spacing:.2em;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{color:var(--text2);text-decoration:none;font-weight:700;font-size:17px}
+.nav-links a:hover{color:var(--gold)}
+.my-plan{border:2px solid var(--gold);border-radius:999px;padding:6px 8px 6px 18px;display:flex;gap:10px;align-items:center;font-weight:700;background:none;cursor:pointer}
+.my-plan span{background:var(--gold);color:#1a1a1a;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-size:15px}
+
+/* hero */
+.hero{padding:72px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.eyebrow{color:var(--gold);font-weight:700;letter-spacing:.25em;font-size:15px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:40px;height:2px;background:var(--gold)}
+.hero h1{font-size:clamp(40px,5.4vw,68px);line-height:1.25;margin:20px 0}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--text2);font-size:19px;max-width:30em}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:10px;padding:14px 26px;font-weight:700;font-size:18px;cursor:pointer;border:2px solid var(--gold);background:var(--gold);color:#1a1a1a;text-decoration:none;transition:.15s}
+.btn:hover{background:#e2bf88}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.hero-note{color:var(--muted);font-size:15px;margin-top:14px}
+.hero-art{border-radius:24px;overflow:hidden;border:2px solid var(--line);position:relative}
+.hero-art svg{display:block;width:100%;height:auto}
+.hero-badge{position:absolute;right:0;bottom:28px;background:#111;padding:12px 20px;font-weight:700;font-size:16px;display:flex;gap:10px;align-items:center;border:2px solid var(--line)}
+.hero-badge::before{content:"";width:10px;height:10px;border-radius:50%;background:#e07a52}
+
+/* section */
+section{padding:72px 0}
+.sec-label{color:var(--gold);letter-spacing:.25em;font-weight:700;font-size:15px}
+.sec-title{font-size:clamp(30px,3.6vw,44px);margin:8px 0 10px}
+.sec-sub{color:var(--text2);font-size:18px;margin:0}
+.philo{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.philo div{background:var(--panel);border:2px solid var(--line);border-radius:var(--radius);padding:26px}
+.philo h3{margin:0 0 6px;font-size:24px;color:var(--gold)}
+.philo p{margin:0;color:var(--text2)}
+
+/* journey */
+.journey{background:var(--bg2);border-top:2px solid var(--line)}
+.journey-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.step-count{font-family:"Noto Serif TC",serif;font-size:20px;color:var(--muted);font-weight:700}
+.step-count b{font-size:44px;color:var(--gold)}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:30px 0 26px}
+.tab{border:none;background:none;text-align:left;padding:12px 2px 0;border-top:5px solid var(--line);font-size:18px;font-weight:700;color:var(--muted);cursor:default}
+.tab .n{display:inline-block;min-width:34px;font-family:"Noto Serif TC",serif;color:inherit}
+.tab.done{color:var(--text2);border-top-color:var(--gold-dark);cursor:pointer}
+.tab.active{color:var(--gold);border-top-color:var(--gold)}
+.panel{background:var(--panel);border:2px solid var(--line-strong);border-radius:18px;padding:36px}
+.step-pill{display:inline-block;border:2px solid var(--gold);color:var(--gold);border-radius:999px;padding:3px 16px;font-weight:900;font-size:15px;letter-spacing:.1em}
+.step-title{font-size:clamp(28px,3vw,38px);margin:14px 0 6px}
+.step-desc{color:var(--text2);margin:0 0 26px;font-size:18px}
+.step-nav{display:flex;justify-content:space-between;margin-top:28px}
+.hint{color:var(--gold);font-weight:700;margin-top:18px;font-size:17px}
+
+/* step 1 */
+.scen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.scen{position:relative;background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:22px 20px;cursor:pointer;transition:.15s;text-align:left}
+.scen:hover{border-color:var(--line-strong)}
+.scen.on{border:3px solid var(--gold);padding:21px 19px;background:#2d2b25}
+.scen .ico{font-size:38px;line-height:1}
+.scen h3{font-family:"Noto Sans TC",sans-serif;font-size:22px;font-weight:900;margin:14px 0 4px}
+.scen p{margin:0;color:var(--text2);font-size:16px}
+.check{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:2px solid var(--line-strong);display:grid;place-items:center;font-weight:900;font-size:16px}
+.scen.on .check{background:var(--gold);border-color:var(--gold);color:#1a1a1a}
+.prio{display:flex;align-items:center;gap:8px;margin-top:14px;font-weight:900;color:var(--gold);font-size:17px}
+.prio button{width:34px;height:34px;border-radius:8px;border:2px solid var(--line-strong);background:var(--card2);cursor:pointer;font-weight:900}
+.prio button:hover:not(:disabled){border-color:var(--gold)}
+.prio button:disabled{opacity:.3;cursor:default}
+
+/* step 2 */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 40px}
+.field label,.field .lbl{display:flex;justify-content:space-between;font-weight:900;font-size:18px;margin-bottom:8px;color:var(--text)}
+.field .val{color:var(--gold)}
+select{width:100%;background:var(--card);border:2px solid var(--line-strong);border-radius:10px;padding:12px 14px;font-size:18px;font-weight:700}
+select:focus{outline:none;border-color:var(--gold)}
+input[type=range]{width:100%;accent-color:var(--gold);height:28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:2px solid var(--line-strong);background:var(--card);border-radius:999px;padding:8px 18px;font-weight:700;font-size:17px;cursor:pointer}
+.chip.on{border-color:var(--gold);background:var(--gold);color:#1a1a1a}
+.upload{grid-column:1/-1;background:#f3efe6;color:#1d1d1d;border-radius:12px;padding:20px 22px;border:2px solid var(--gold)}
+.upload b{font-size:18px}
+.upload input{display:block;margin:10px 0 6px;font-size:16px}
+.upload small{color:#555;font-size:15px}
+
+/* step 3 */
+.profile{display:flex;gap:28px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:30px}
+.profile-ico{width:96px;height:96px;border-radius:50%;background:var(--gold);color:#1a1a1a;display:grid;place-items:center;font-size:44px;flex:none}
+.profile small{color:var(--gold);letter-spacing:.2em;font-weight:700;font-size:14px}
+.profile h3{font-size:34px;margin:2px 0 6px}
+.profile p{margin:0 0 14px;color:var(--text2)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{border:2px solid var(--gold);color:var(--gold);border-radius:999px;padding:4px 16px;font-weight:700;font-size:16px}
+.insight{margin-top:22px;border-left:5px solid var(--gold);padding:14px 22px;background:var(--card)}
+.insight b{font-size:19px}
+.insight p{margin:6px 0 0;color:var(--text2)}
+
+/* step 4 */
+.props{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prop{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden}
+.prop.on{border:3px solid var(--gold)}
+.prop-img{height:110px;display:grid;place-items:center;font-size:54px;background:var(--card2);border-bottom:2px solid var(--line)}
+.prop-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.prop small{color:var(--gold);font-weight:900;font-size:14px;letter-spacing:.08em}
+.prop h3{font-family:"Noto Sans TC",sans-serif;font-weight:900;font-size:22px;margin:6px 0}
+.prop p{margin:0 0 10px;color:var(--text2);font-size:16px}
+.prop ul{margin:0 0 16px;padding-left:20px;color:var(--text2);font-size:15px}
+.prop .btn{margin-top:auto;justify-content:center;width:100%;font-size:17px;padding:11px}
+.prop:not(.on) .btn{background:transparent;color:var(--text);border-color:var(--line-strong)}
+
+.block{margin-top:30px;background:var(--bg2);border:2px solid var(--line-strong);border-radius:18px;padding:28px}
+.block-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.block-head small{color:var(--gold);letter-spacing:.2em;font-weight:700;font-size:14px}
+.block-head h3{font-size:30px;margin:2px 0}
+.block-head p{margin:0;color:var(--text2)}
+.ctrls{display:flex;gap:8px;flex-wrap:wrap}
+.ctrl{border:2px solid var(--line-strong);background:var(--card);border-radius:10px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:16px}
+.ctrl:hover{border-color:var(--gold)}
+.ctrl.on{background:var(--gold);border-color:var(--gold);color:#1a1a1a}
+
+/* mode switch (NEW) */
+.mode-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.mode-switch{display:inline-flex;background:var(--card);border:3px solid var(--gold);border-radius:999px;padding:5px;gap:4px}
+.mode-switch button{border:none;background:none;border-radius:999px;padding:10px 24px;font-weight:900;font-size:19px;cursor:pointer;color:var(--text2)}
+.mode-switch button.on{background:var(--gold);color:#1a1a1a}
+.mode-switch .arrow{align-self:center;color:var(--gold);font-weight:900}
+.plan-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}
+.plan-box{background:#191d1e;border:2px solid var(--line-strong);border-radius:14px;padding:14px;overflow:hidden;position:relative}
+.plan-box .tag-corner{position:absolute;left:16px;top:12px;color:var(--gold);font-size:13px;letter-spacing:.15em;font-weight:700}
+.plan-zoom{transform-origin:center;transition:transform .2s}
+.plan-svg{display:block;width:100%;height:auto}
+.concept{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:22px}
+.concept small{color:var(--gold);letter-spacing:.15em;font-weight:700;font-size:14px}
+.concept h4{font-family:"Noto Serif TC",serif;font-size:26px;margin:4px 0 8px}
+.concept p{margin:0 0 14px;color:var(--text2);font-size:16px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:15px;font-weight:700;margin-bottom:14px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+.mode-info{border-top:2px solid var(--line);padding-top:14px}
+.mode-info .title{font-weight:900;color:var(--gold);font-size:18px;margin-bottom:8px}
+.mode-info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 12px;font-size:16px}
+.mode-info dt{font-weight:900;color:var(--text)}
+.mode-info dd{margin:0;color:var(--text2)}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+.compare .cmp{background:#191d1e;border:2px solid var(--line-strong);border-radius:14px;padding:12px}
+.compare .cmp h5{margin:0 0 6px;font-size:20px;font-weight:900;display:flex;justify-content:space-between}
+.compare .cmp h5 span{color:var(--gold);font-size:15px}
+.compare .cmp ul{margin:8px 0 0;padding-left:20px;color:var(--text2);font-size:15px}
+.compare .vs{font-size:34px;color:var(--gold);font-weight:900}
+.disclaimer{margin-top:20px;background:#22201b;border:2px solid #4b4334;border-radius:10px;padding:12px 18px;color:var(--text2);font-size:15px}
+
+.three-wrap{position:relative;border:2px solid var(--line-strong);border-radius:14px;overflow:hidden;background:#101213;height:440px;cursor:grab;touch-action:none}
+.three-wrap:active{cursor:grabbing}
+.three-wrap canvas{display:block}
+.three-tip{position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.65);padding:6px 14px;border-radius:8px;font-size:15px;font-weight:700}
+.three-fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}
+.zoom-row{display:flex;align-items:center;gap:12px;margin-top:12px;font-weight:700}
+.zoom-row input{flex:1;max-width:360px}
+
+/* step 5 */
+.final{display:flex;gap:24px;align-items:center;margin-bottom:22px}
+.final-ico{width:110px;height:110px;border-radius:14px;background:var(--card2);border:2px solid var(--line);display:grid;place-items:center;font-size:56px;flex:none}
+.final small{color:var(--gold);letter-spacing:.2em;font-weight:700;font-size:14px}
+.final h3{font-size:30px;margin:2px 0}
+.final p{margin:0;color:var(--text2)}
+.sum{width:100%;border-collapse:collapse;font-size:18px}
+.sum th{width:150px;text-align:left;color:var(--muted);font-weight:700;padding:14px 10px;border-bottom:2px solid var(--line);vertical-align:top}
+.sum td{padding:14px 10px;border-bottom:2px solid var(--line);font-weight:700}
+.final-plan{margin-top:26px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(120px);background:var(--gold);color:#1a1a1a;padding:12px 26px;border-radius:999px;font-weight:900;transition:.3s;z-index:100}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;place-items:center;z-index:90;padding:16px}
+.modal-bg.show{display:grid}
+.modal{background:var(--panel);border:2px solid var(--line-strong);border-radius:16px;width:min(520px,100%);padding:30px}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+.modal h3{font-size:26px;margin:0}
+.modal .x{border:2px solid var(--line-strong);background:none;width:40px;height:40px;border-radius:8px;cursor:pointer;font-size:20px}
+.modal .note{color:var(--muted);font-size:15px;margin:6px 0 16px}
+.modal label{display:block;font-weight:900;margin:14px 0 6px}
+.modal input{width:100%;background:var(--card);border:2px solid var(--line-strong);border-radius:10px;padding:12px 14px;font-size:17px}
+.modal input:focus{outline:none;border-color:var(--gold)}
+.modal .btn{width:100%;justify-content:center;margin-top:22px}
+.done-msg{text-align:center;padding:10px 0}
+.done-msg b{font-size:22px;color:var(--gold)}
+
+footer{border-top:2px solid var(--line);padding:30px 0;color:var(--muted);font-size:15px;text-align:center}
+
+@media (max-width:900px){
+  .hero-grid,.plan-layout,.form-grid{grid-template-columns:1fr}
+  .philo,.props{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}.compare .vs{text-align:center}
+  .tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .tab{font-size:14px}.tab .lbl{display:none}
+  .nav-links a{display:none}
+  .panel{padding:22px}
+  .profile,.final{flex-direction:column;align-items:flex-start}
+  body{font-size:17px}
+}
+@media (max-width:560px){.wrap{padding:0 16px}.mode-switch button{padding:8px 14px;font-size:16px}}
+@media print{
+  header,.hero,#philosophy,.tabs,.journey-head,.step-nav,.actions,footer,.toast{display:none!important}
+  body{background:#fff;color:#000}
+  .panel{border:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><div class="logo-mark">N</div><div><b>NOIR SPACE</b><small>INTERIOR INTELLIGENCE</small></div></a>
+    <nav class="nav-links">
+      <a href="#journey">體驗流程</a>
+      <a href="#philosophy">設計理念</a>
+      <button class="my-plan" id="myPlanBtn">我的方案 <span id="planCount">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">HOME · WORK · LIFE</div>
+        <h1>讓生活，<br>擁有<em>更好的尺度</em>。</h1>
+        <p>從日常習慣出發，探索工作、料理與相聚的最佳空間配置。以設計的細節，成就生活的質感。</p>
+        <div style="margin-top:28px"><a class="btn" href="#journey">開始打造我的生活提案 ↗</a></div>
+        <div class="hero-note">約 3 分鐘・免費體驗・無須註冊</div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 640 460" aria-hidden="true">
+          <rect width="640" height="460" fill="#a9aba2"/>
+          <rect x="0" y="330" width="640" height="130" fill="#8e8576"/>
+          <path d="M0 330 L640 330" stroke="#7a7265" stroke-width="3"/>
+          <rect x="250" y="40" width="330" height="230" rx="4" fill="#97a196" stroke="#6f7a6f" stroke-width="6"/>
+          <path d="M260 230 C330 150 380 210 430 140 C470 100 520 160 570 120 L570 260 L260 260Z" fill="#7f8d80"/>
+          <line x1="415" y1="40" x2="415" y2="270" stroke="#6f7a6f" stroke-width="6"/>
+          <rect x="460" y="190" width="70" height="44" rx="3" fill="#3f4a4a"/><rect x="466" y="196" width="58" height="32" fill="#8fa0a6"/>
+          <line x1="190" y1="0" x2="190" y2="110" stroke="#2e2e2e" stroke-width="3"/>
+          <path d="M150 140 L230 140 L210 110 L170 110Z" fill="#d7d2c6"/><ellipse cx="190" cy="142" rx="40" ry="5" fill="#fff6dc"/>
+          <line x1="330" y1="0" x2="330" y2="110" stroke="#2e2e2e" stroke-width="3"/>
+          <path d="M290 140 L370 140 L350 110 L310 110Z" fill="#d7d2c6"/><ellipse cx="330" cy="142" rx="40" ry="5" fill="#fff6dc"/>
+          <rect x="120" y="270" width="370" height="26" rx="4" fill="#d9d6cf"/>
+          <rect x="138" y="296" width="334" height="110" fill="#6d6559"/>
+          <rect x="160" y="320" width="130" height="14" rx="3" fill="#5a5349"/><rect x="320" y="320" width="130" height="14" rx="3" fill="#5a5349"/>
+          <line x1="305" y1="296" x2="305" y2="406" stroke="#5a5349" stroke-width="4"/>
+          <ellipse cx="280" cy="266" rx="40" ry="7" fill="#444"/>
+          <circle cx="70" cy="300" r="30" fill="#5f7a62"/><circle cx="96" cy="270" r="24" fill="#6b8a6d"/><rect x="62" y="320" width="34" height="50" rx="4" fill="#4a4a44"/>
+          <rect x="530" y="285" width="70" height="10" rx="3" fill="#4f4a42"/><rect x="540" y="295" width="6" height="90" fill="#4f4a42"/><rect x="584" y="295" width="6" height="90" fill="#4f4a42"/>
+        </svg>
+        <div class="hero-badge">為每一種生活，留一個位置</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <div class="wrap">
+      <div class="sec-label">01 / OUR PHILOSOPHY</div>
+      <h2 class="sec-title">好的空間，應該適應你的生活</h2>
+      <p class="sec-sub">廚房不只用來煮飯。它可以是白天的辦公桌，也可以是週末招待朋友的聚會中心。</p>
+      <div class="philo">
+        <div><h3>工作</h3><p>非料理時段不閒置，中島就是你的專注角落。</p></div>
+        <div><h3>料理</h3><p>水槽、備料、爐具動線順暢，煮飯不再手忙腳亂。</p></div>
+        <div><h3>相聚</h3><p>延伸中島變餐桌，親友來訪也不擁擠。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <div class="journey-head">
+        <div>
+          <div class="sec-label">02 / YOUR JOURNEY</div>
+          <h2 class="sec-title">找到你的理想廚房</h2>
+          <p class="sec-sub">跟著簡單的步驟，讓空間更貼近你。</p>
+        </div>
+        <div class="step-count">STEP <b id="stepNum">01</b> / 05</div>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div class="panel" id="panel"></div>
+    </div>
+  </section>
+</main>
+
+<footer>© NOIR SPACE・情境式廚房配置網站（課程原型展示）</footer>
+
+<div class="modal-bg" id="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal-head"><h3 id="mTitle">預約門市諮詢</h3><button class="x" id="mClose" aria-label="關閉">✕</button></div>
+    <div id="mBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ================= DATA ================= */
+const SCENARIOS=[
+  {id:'work',ico:'💻',title:'我在家工作',desc:'希望有舒適、專注的工作角落'},
+  {id:'cook',ico:'🍳',title:'我想好好煮一餐',desc:'讓料理動線更順暢自在'},
+  {id:'switch',ico:'🔄',title:'工作煮飯交替',desc:'一個空間，靈活切換多種模式'},
+  {id:'party',ico:'🥂',title:'朋友來聚聚',desc:'中島變餐桌，招待親友不擁擠'},
+  {id:'relax',ico:'☕',title:'下班後放鬆',desc:'享受喝茶、聊天的療癒時光'}
+];
+const OPTS={
+  area:['15 坪以下','15–20 坪','20–30 坪','30 坪以上'],
+  layout:['一字型','L 型','開放式','ㄇ字型'],
+  cooking:['外食為主','簡單料理為主','每天開伙','喜歡做大餐'],
+  style:['溫暖木質','現代簡約','工業風','北歐清新'],
+  problems:['油煙與通風','收納不足','工作與料理互相干擾','空間太小','噪音問題','照明不足']
+};
+const PROB_TAG={'油煙與通風':'通風優先','收納不足':'收納優先','工作與料理互相干擾':'分區優先','空間太小':'坪效優先','噪音問題':'降噪優先','照明不足':'照明優先'};
+const TYPES={
+  '專注工作型':{ico:'✳',insight:'你需要快速切換的工作與料理區域，但工作設備不能直接暴露在料理檯面旁；應保留乾燥、安全的獨立收納位置。'},
+  '好客聚會型':{ico:'🥂',insight:'你常在家招待親友，中島需要能延伸成多人餐桌，備餐區也要能當自助吧，讓主人不用一直待在爐具前。'},
+  '料理生活家型':{ico:'🍳',insight:'你在廚房的時間長，水槽、備料、爐具的動線要短而順，並把油煙與其他區域隔開。'},
+  '放鬆療癒型':{ico:'☕',insight:'你重視下班後的放鬆氛圍，暖色燈光與舒適的座位比大量工作檯面更重要。'},
+  '彈性切換型':{ico:'🔄',insight:'你的需求會隨時間變化，可移動、可調整的家具比固定隔間更適合你。'}
+};
+const PROPOSALS={
+  island:{ico:'🪑',name:'彈性升降工作中島',desc:'以可調高度的中島作為工作與料理切換核心，搭配獨立的電源及設備安全配置。',
+    pts:['辦公與料理檯面使用模式分明','以情境燈光輔助工作與放鬆','預留電器、座椅與動線所需空間'],
+    concept:'中央工作中島與料理檯面保持分離，餐桌、收納與通行路徑各有定位。'},
+  modular:{ico:'🧺',name:'輕量模組收納廚房',desc:'以收納櫃組、可移動工作檯與分層照明，優先提升有限坪數的日常效率。',
+    pts:['垂直收納與隱藏式工作設備','可移動輔助桌面靈活調度','降低固定裝潢與雜物堆積'],
+    concept:'以模組收納牆把雜物收齊，移動工作檯依時段推到不同位置使用。'},
+  dual:{ico:'🏡',name:'雙區分流料理空間',desc:'將高油煙烹調與較安靜的工作／交談區分開，降低氣味與聲音互相干擾。',
+    pts:['料理區集中配置排煙設備','辦公區遠離熱源與水槽','保留家庭互動與彈性收納'],
+    concept:'玻璃隔間把料理區與工作區分開，聚會時打開隔間門連成一體。'}
+};
+const MODES={work:'辦公模式',cook:'料理模式',party:'聚會模式'};
+const MODE_ICO={work:'💻',cook:'🍳',party:'🥂'};
+const ACTIVE={work:['work','flex','storage'],cook:['cook','flex','storage'],party:['dine','flex','cook']};
+const FLEX_CAT={work:'work',cook:'cook',party:'dine'};
+const CAT_COLOR={cook:'#9a7254',work:'#5f7884',dine:'#86684a',storage:'#56685a'};
+const CAT_NAME={cook:'料理 / 清潔',work:'工作中島 / 書桌',dine:'休憩用餐',storage:'垂直收納'};
+const SURF={
+  island:{work:'中島降至 75cm，當作雙人工作桌',cook:'中島升至 90cm，當作備料檯',party:'拉出延伸板，中島變 6 人餐桌'},
+  modular:{work:'移動工作檯推到窗邊當書桌',cook:'工作檯推到爐具旁，擴充備料空間',party:'工作檯與摺疊餐桌併成長桌'},
+  dual:{work:'在玻璃隔間後的書桌工作，不受油煙干擾',cook:'料理區全開，隔間門關上擋油煙',party:'打開隔間門，兩區連成聚會空間'}
+};
+const LIGHT={work:'4000K 中性白光，專注不刺眼',cook:'3000K 暖白光＋檯面重點照明',party:'2700K 暖黃氛圍燈，調暗主燈'};
+const STORE={work:'鍋具與調味料收進上櫃，桌面淨空',cook:'筆電、文件收進乾燥側抽屜，遠離水火',party:'工作用品全收起，備餐區改當自助吧'};
+
+const TOP=[
+  {x:80,y:55,w:95,h:48,label:'洗滌槽',cat:'cook',key:'sink'},
+  {x:185,y:55,w:95,h:48,label:'備餐區',cat:'cook'},
+  {x:290,y:55,w:95,h:48,label:'爐具',cat:'cook',key:'stove'},
+  {x:395,y:55,w:125,h:48,label:'收納櫃',cat:'storage'}
+];
+const PLANS={
+  island:{
+    zones:[...TOP,
+      {x:80,y:150,w:70,h:110,label:'儲物櫃',cat:'storage',tall:true},
+      {flex:{work:{x:200,y:165,w:200,h:75,label:'升降工作中島',sub:'WORK｜降至 75cm'},
+             cook:{x:200,y:165,w:200,h:75,label:'升降工作中島',sub:'PREP｜升至 90cm'},
+             party:{x:180,y:158,w:240,h:90,label:'中島延伸餐桌',sub:'DINE｜可坐 6 人'}}},
+      {x:445,y:145,w:75,h:115,label:'休憩 /\n用餐區',cat:'dine'}],
+    chairs:{work:[[260,254],[340,254]],cook:[],party:[[220,146],[300,146],[380,146],[220,261],[300,261],[380,261]]},
+    flow:{work:[[66,278],[180,290],[260,262]],cook:[[66,278],[172,278],[172,120],[232,120],[337,120],[300,160]],party:[[66,278],[170,295],[480,295],[480,265]]}
+  },
+  modular:{
+    zones:[...TOP,
+      {x:80,y:125,w:60,h:175,label:'模組\n收納牆',cat:'storage',tall:true},
+      {flex:{work:{x:170,y:238,w:140,h:55,label:'移動工作檯',sub:'WORK｜推到窗邊'},
+             cook:{x:200,y:122,w:160,h:50,label:'移動工作檯',sub:'PREP｜靠近爐具'},
+             party:{x:290,y:175,w:225,h:80,label:'工作檯＋餐桌',sub:'DINE｜併桌 6 人'}}},
+      {x:410,y:180,w:105,h:70,label:'摺疊餐桌',cat:'dine',hideIn:['party']}],
+    chairs:{work:[[240,306]],cook:[],party:[[330,164],[405,164],[480,164],[330,266],[405,266],[480,266]]},
+    flow:{work:[[66,278],[150,310],[215,300]],cook:[[66,278],[155,278],[155,115],[232,115],[337,115]],party:[[66,278],[200,300],[290,240]]}
+  },
+  dual:{
+    partition:true,
+    zones:[
+      {x:80,y:55,w:75,h:48,label:'洗滌槽',cat:'cook',key:'sink'},
+      {x:165,y:55,w:75,h:48,label:'備餐區',cat:'cook'},
+      {x:250,y:55,w:70,h:48,label:'爐具',cat:'cook',key:'stove'},
+      {x:345,y:55,w:175,h:48,label:'收納櫃',cat:'storage'},
+      {x:100,y:175,w:190,h:70,label:'中島料理台',cat:'cook'},
+      {x:365,y:135,w:150,h:60,label:'工作書桌',cat:'work'},
+      {x:365,y:232,w:150,h:62,label:'交談餐桌',cat:'dine'}],
+    chairs:{work:[[440,207]],cook:[],party:[[400,222],[480,222],[400,305],[480,305]]},
+    flow:{work:[[66,278],[200,295],[345,210],[420,205]],cook:[[66,278],[117,120],[202,120],[285,120],[195,170]],party:[[66,278],[200,295],[440,310]]}
+  }
+};
+
+/* ================= STATE ================= */
+const state={
+  step:1,maxStep:1,
+  sel:['work','switch'],
+  area:'20–30 坪',layout:'開放式',workDays:3,hours:1.5,cooking:'簡單料理為主',style:'溫暖木質',
+  problems:['收納不足'],file:'',
+  proposal:null,mode:'work',compare:false,zoom:1,view3d:'full',dist:11
+};
+let saved=0;
+try{saved=parseInt(localStorage.getItem('noir_saved')||'0',10)||0}catch(e){}
+
+/* ================= HELPERS ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200)}
+
+function profile(){
+  const s=state.sel;let type;
+  if(s.includes('party')&&s.indexOf('party')<=1&&!(s[0]==='work'&&state.workDays>=4))type='好客聚會型';
+  else if(state.workDays>=3&&(s.includes('work')||s.includes('switch')))type='專注工作型';
+  else if(['每天開伙','喜歡做大餐'].includes(state.cooking)||s[0]==='cook')type='料理生活家型';
+  else if(s[0]==='relax')type='放鬆療癒型';
+  else type='彈性切換型';
+  const tags=[type,state.cooking.replace('為主',''),state.style+'風格'];
+  if(s.includes('switch'))tags.push('彈性切換');
+  if(s.includes('party'))tags.push('聚會需求');
+  state.problems.slice(0,2).forEach(p=>tags.push(PROB_TAG[p]));
+  return {type,tags,...TYPES[type]};
+}
+function rankedProposals(){
+  const s=state.sel,p=state.problems;
+  const sc={
+    island:1+((s.includes('work')||s.includes('switch'))?2:0)+(s.includes('party')?1:0),
+    modular:1+((p.includes('空間太小')||p.includes('收納不足'))?2:0)+(['15 坪以下','15–20 坪'].includes(state.area)?1:0),
+    dual:1+((p.includes('油煙與通風')||p.includes('噪音問題')||p.includes('工作與料理互相干擾'))?2:0)+((s.includes('cook')||['每天開伙','喜歡做大餐'].includes(state.cooking))?1:0)
+  };
+  return ['island','modular','dual'].map((k,i)=>({k,s:sc[k],i})).sort((a,b)=>b.s-a.s||a.i-b.i).map(o=>o.k);
+}
+function zonesFor(pid,mode){
+  return PLANS[pid].zones.filter(z=>!(z.hideIn||[]).includes(mode))
+    .map(z=>z.flex?{...z.flex[mode],cat:'flex',flexCat:FLEX_CAT[mode]}:z);
+}
+
+/* ================= 2D PLAN SVG ================= */
+function planSVG(pid,mode,opts={}){
+  const P=PLANS[pid],act=ACTIVE[mode],zones=zonesFor(pid,mode),uid=pid+mode+(opts.id||'');
+  let s=`<svg class="plan-svg" viewBox="0 0 600 380" role="img" aria-label="${PROPOSALS[pid].name}・${MODES[mode]}平面圖">
+  <defs><pattern id="g${uid}" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#262b2c" stroke-width="1"/></pattern>
+  <marker id="a${uid}" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4ad72"/></marker></defs>
+  <rect width="600" height="380" fill="url(#g${uid})"/>
+  <rect x="60" y="40" width="480" height="285" fill="#1b1f20" stroke="#d9c7a5" stroke-width="7"/>
+  <rect x="55" y="255" width="12" height="46" fill="#1b1f20"/>
+  <path d="M60 255 A46 46 0 0 1 106 301" fill="none" stroke="#b9ad98" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="300" y="350" text-anchor="middle" fill="#cfc6b4" font-size="15" font-weight="700">入口 / ENTRY →</text>
+  <text x="520" y="315" text-anchor="end" fill="#cfc6b4" font-size="14" font-weight="700">N →</text>`;
+  if(P.partition){
+    if(mode==='party') s+=`<line x1="332" y1="110" x2="332" y2="170" stroke="#9fc3cf" stroke-width="5"/><line x1="332" y1="270" x2="332" y2="322" stroke="#9fc3cf" stroke-width="5"/><text x="340" y="225" fill="#9fc3cf" font-size="13" font-weight="700">隔間打開</text>`;
+    else s+=`<line x1="332" y1="110" x2="332" y2="322" stroke="#9fc3cf" stroke-width="5" stroke-dasharray="${mode==='cook'?'0':'14 6'}"/><text x="338" y="320" fill="#9fc3cf" font-size="13" font-weight="700">玻璃隔間</text>`;
+  }
+  zones.forEach(z=>{
+    const cat=z.cat==='flex'?z.flexCat:z.cat;
+    const on=act.includes(z.cat)||act.includes(cat);
+    const lines=z.label.split('\n');
+    const cy=z.y+z.h/2-(z.sub?9:0)-(lines.length-1)*9;
+    s+=`<g opacity="${on?1:.3}"><rect x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}" rx="8" fill="${CAT_COLOR[cat]}" stroke="${on?'#f0c98a':'#6a7072'}" stroke-width="${on?4:2}"/>`;
+    lines.forEach((ln,i)=>{s+=`<text x="${z.x+z.w/2}" y="${cy+i*19+6}" text-anchor="middle" fill="#fff" font-size="${z.w<90?15:17}" font-weight="900">${esc(ln)}</text>`});
+    if(z.sub)s+=`<text x="${z.x+z.w/2}" y="${cy+(lines.length-1)*19+28}" text-anchor="middle" fill="#ffe6bb" font-size="13" font-weight="700">${esc(z.sub)}</text>`;
+    s+=`</g>`;
+  });
+  (P.chairs[mode]||[]).forEach(([x,y])=>{s+=`<circle cx="${x}" cy="${y}" r="9" fill="#2b2f30" stroke="#f0c98a" stroke-width="2.5"/>`});
+  const f=P.flow[mode];
+  s+=`<polyline points="${f.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#d4ad72" stroke-width="3.5" stroke-dasharray="9 7" marker-end="url(#a${uid})"/>`;
+  s+=`<rect x="68" y="8" width="${opts.compact?150:200}" height="28" rx="14" fill="#d4ad72"/><text x="${68+(opts.compact?75:100)}" y="27" text-anchor="middle" fill="#1a1a1a" font-size="15" font-weight="900">${MODE_ICO[mode]} ${MODES[mode]}${opts.compact?'':'・動線'}</text>`;
+  return s+'</svg>';
+}
+
+/* ================= RENDER ================= */
+const STEP_NAMES=['生活情境','生活習慣','型態標籤','方案配置','我的方案'];
+function renderTabs(){
+  $('#tabs').innerHTML=STEP_NAMES.map((n,i)=>{
+    const k=i+1,cls=k===state.step?'active':(k<=state.maxStep?'done':'');
+    return `<button class="tab ${cls}" data-go="${k}" ${k<=state.maxStep?'':'disabled'}><span class="n">0${k}</span><span class="lbl">${n}</span></button>`;
+  }).join('');
+  $('#stepNum').textContent='0'+state.step;
+}
+function nav(prev,next,nextLabel='下一步 →',disabled=false){
+  return `<div class="step-nav">${prev?`<button class="btn ghost" data-go="${prev}">← 上一步</button>`:'<span></span>'}${next?`<button class="btn" data-go="${next}" ${disabled?'disabled':''}>${nextLabel}</button>`:''}</div>`;
+}
+
+function step1(){
+  const cards=SCENARIOS.map(sc=>{
+    const idx=state.sel.indexOf(sc.id),on=idx>-1;
+    return `<div class="scen ${on?'on':''}" data-scen="${sc.id}" role="button" tabindex="0" aria-pressed="${on}">
+      <div class="check">${on?'✓':''}</div><div class="ico">${sc.ico}</div><h3>${sc.title}</h3><p>${sc.desc}</p>
+      ${on?`<div class="prio">優先 ${idx+1}<button data-up="${sc.id}" ${idx===0?'disabled':''} aria-label="提高優先">↑</button><button data-down="${sc.id}" ${idx===state.sel.length-1?'disabled':''} aria-label="降低優先">↓</button></div>`:''}
+    </div>`;}).join('');
+  return `<span class="step-pill">STEP 01</span><h3 class="step-title">想像一下，你希望在廚房做什麼？</h3>
+  <p class="step-desc">選擇符合你的生活情境（可複選），並用箭頭調整需求的優先順序。</p>
+  <div class="scen-grid">${cards}</div>
+  <div class="hint">✦ 越前面的情境，會在推薦方案中獲得更高優先權。</div>
+  ${nav(0,2,'下一步 →',!state.sel.length)}`;
+}
+function sel(id,arr,val){return `<select id="${id}">${arr.map(o=>`<option ${o===val?'selected':''}>${o}</option>`).join('')}</select>`}
+function step2(){
+  return `<span class="step-pill">STEP 02</span><h3 class="step-title">多了解一點你的日常</h3>
+  <p class="step-desc">這些資訊能幫助我們做出更貼近現實條件的配置建議。</p>
+  <div class="form-grid">
+    <div class="field"><label for="f-area">住家坪數</label>${sel('f-area',OPTS.area,state.area)}</div>
+    <div class="field"><label for="f-layout">廚房格局</label>${sel('f-layout',OPTS.layout,state.layout)}</div>
+    <div class="field"><label for="f-days">每週在家工作天數 <span class="val" id="v-days">${state.workDays} 天</span></label><input type="range" id="f-days" min="0" max="7" step="1" value="${state.workDays}"></div>
+    <div class="field"><label for="f-hours">每天待在廚房的時間 <span class="val" id="v-hours">${state.hours} 小時</span></label><input type="range" id="f-hours" min="0" max="4" step="0.5" value="${state.hours}"></div>
+    <div class="field"><label for="f-cook">料理習慣</label>${sel('f-cook',OPTS.cooking,state.cooking)}</div>
+    <div class="field"><label for="f-style">喜歡的風格</label>${sel('f-style',OPTS.style,state.style)}</div>
+    <div class="field" style="grid-column:1/-1"><div class="lbl">你目前最想解決的問題（可複選）</div>
+      <div class="chips">${OPTS.problems.map(p=>`<button class="chip ${state.problems.includes(p)?'on':''}" data-prob="${p}">${p}</button>`).join('')}</div></div>
+    <div class="upload"><b>上傳廚房平面圖</b>（選填）<input type="file" id="f-file" accept=".jpg,.jpeg,.png,.pdf">
+      <small>${state.file?'已選擇：'+esc(state.file)+'。':''}支援 JPG、PNG、PDF；目前僅記錄檔名，不會自動判讀平面圖。</small></div>
+  </div>${nav(1,3)}`;
+}
+function step3(){
+  const p=profile();
+  return `<span class="step-pill">STEP 03</span><h3 class="step-title">你的生活型態輪廓</h3>
+  <p class="step-desc">根據你填寫的資料，整理出你的空間需求標籤。</p>
+  <div class="profile"><div class="profile-ico">${p.ico}</div><div>
+    <small>YOUR LIFESTYLE</small><h3>${p.type}</h3>
+    <p>你的居家條件為 ${state.area}、${state.layout}廚房，每週在家工作 ${state.workDays} 天，每天約有 ${state.hours} 小時待在廚房。</p>
+    <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></div>
+  <div class="insight"><b>設計洞察</b><p>${p.insight}</p></div>${nav(2,4)}`;
+}
+function step4(){
+  const order=rankedProposals();
+  if(!state.proposal)state.proposal=order[0];
+  const pid=state.proposal,P=PROPOSALS[pid];
+  const cards=order.map((k,i)=>{const o=PROPOSALS[k],on=k===pid;return `<div class="prop ${on?'on':''}">
+    <div class="prop-img">${o.ico}</div><div class="prop-body"><small>${i===0?'★ 最符合需求':'空間提案 '+(i+1)}</small>
+    <h3>${o.name}</h3><p>${o.desc}</p><ul>${o.pts.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <button class="btn" data-prop="${k}">${on?'✓ 已選擇':'選擇這個方案'}</button></div></div>`}).join('');
+  return `<span class="step-pill">STEP 04</span><h3 class="step-title">為你推薦的 3 種空間提案</h3>
+  <p class="step-desc">依據需求優先順序產生概念方案，可點選查看設計重點。</p>
+  <div class="props">${cards}</div>
+
+  <div class="block" id="switchBlock">
+    <div class="block-head"><div><small>SCENE SWITCH / 情境切換預覽</small><h3>辦公 ↔ 料理 切換預覽</h3>
+      <p>同一個空間，切換模式即可看到檯面、燈光與收納怎麼跟著改變。</p></div>
+      <div class="ctrls"><button class="ctrl" data-zoom="-">－</button><button class="ctrl" data-zoom="0">重設</button><button class="ctrl" data-zoom="+">＋</button>
+      <button class="ctrl ${state.compare?'on':''}" id="cmpBtn">⇆ 前後對照</button></div></div>
+    <div class="mode-bar">
+      <div class="mode-switch" role="tablist" aria-label="情境模式">
+        ${['work','cook','party'].map((m,i)=>`${i===1?'<span class="arrow">↔</span>':''}${i===2?'<span class="arrow">｜</span>':''}<button role="tab" class="${state.mode===m?'on':''}" data-mode="${m}">${MODE_ICO[m]} ${MODES[m]}</button>`).join('')}
+      </div>
+    </div>
+    <div id="planArea">${planArea()}</div>
+    <div class="disclaimer">提醒：以上為前端規則式概念推薦，並非真正的 AI 建築分析或施工圖；油煙、管線、通風、逃生動線與設備安全距離，仍須由專業人員現場確認。</div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><div><small>3D IMMERSIVE VIEW</small><h3>3D 沉浸式導覽</h3>
+      <p>拖曳旋轉模型，用拉桿縮放；模型會跟著上方的模式一起切換。</p></div>
+      <div class="ctrls"><button class="ctrl ${state.view3d==='full'?'on':''}" data-view="full">全景導覽</button><button class="ctrl ${state.view3d==='local'?'on':''}" data-view="local">局部預覽</button></div></div>
+    <div class="three-wrap" id="threeWrap"><div class="three-tip">🖱 拖曳旋轉・目前：${MODES[state.mode]}</div></div>
+    <div class="zoom-row">遠 <input type="range" id="zoom3d" min="5" max="16" step="0.5" value="${21-state.dist}" aria-label="3D 縮放"> 近</div>
+  </div>
+  ${nav(3,5,'查看我的方案 →')}`;
+}
+function planArea(){
+  const pid=state.proposal,P=PROPOSALS[pid];
+  if(state.compare){
+    const col=m=>`<div class="cmp"><h5>${MODE_ICO[m]} ${MODES[m]}<span>${m==='work'?'切換前':'切換後'}</span></h5>${planSVG(pid,m,{compact:true,id:'c'})}
+      <ul><li>${SURF[pid][m]}</li><li>${LIGHT[m]}</li><li>${STORE[m]}</li></ul></div>`;
+    return `<div class="compare">${col('work')}<div class="vs">⇆</div>${col('cook')}</div>`;
+  }
+  const cats=[...new Set(zonesFor(pid,state.mode).map(z=>z.cat==='flex'?z.flexCat:z.cat))];
+  return `<div class="plan-layout">
+    <div class="plan-box"><div class="plan-zoom" id="planZoom" style="transform:scale(${state.zoom})">${planSVG(pid,state.mode)}</div></div>
+    <div class="concept"><small>DESIGN CONCEPT / ${['island','modular','dual'].indexOf(pid)+1}</small><h4>${P.name}</h4><p>${P.concept}</p>
+      <div class="legend">${cats.map(c=>`<div><i style="background:${CAT_COLOR[c]}"></i>${CAT_NAME[c]}</div>`).join('')}</div>
+      <div class="mode-info"><div class="title">${MODE_ICO[state.mode]} ${MODES[state.mode]}・空間會這樣變</div>
+        <dl><dt>檯面</dt><dd>${SURF[pid][state.mode]}</dd><dt>燈光</dt><dd>${LIGHT[state.mode]}</dd><dt>收納</dt><dd>${STORE[state.mode]}</dd></dl></div>
+    </div></div>`;
+}
+function step5(){
+  const p=profile(),pid=state.proposal||rankedProposals()[0],P=PROPOSALS[pid];
+  const scen=state.sel.map(id=>SCENARIOS.find(s=>s.id===id).title).join('、');
+  return `<span class="step-pill">STEP 05</span><h3 class="step-title">我的專屬生活提案</h3>
+  <p class="step-desc">讓你的生活想像，成為下一步的設計方向。</p>
+  <div class="final"><div class="final-ico">${P.ico}</div><div><small>YOUR PERSONAL PLAN</small><h3>${P.name}</h3><p>${P.desc}</p></div></div>
+  <table class="sum">
+    <tr><th>生活型態</th><td>${p.type}</td></tr>
+    <tr><th>空間條件</th><td>${state.area} / ${state.layout}廚房</td></tr>
+    <tr><th>偏好風格</th><td>${state.style}</td></tr>
+    <tr><th>生活情境</th><td>${scen}</td></tr>
+    <tr><th>優先改善</th><td>${state.problems.join('、')||'—'}</td></tr>
+    <tr><th>情境切換</th><td>辦公：${SURF[pid].work}<br>料理：${SURF[pid].cook}</td></tr>
+    <tr><th>配置重點</th><td>${P.pts.join('；')}</td></tr>
+    ${state.file?`<tr><th>平面圖</th><td>${esc(state.file)}</td></tr>`:''}
+  </table>
+  <div class="final-plan block"><div class="block-head"><div><small>YOUR SPACE / FLOOR PLAN</small><h3>方案格局概念圖</h3></div></div>
+    <div class="compare">
+      <div class="cmp"><h5>💻 辦公模式</h5>${planSVG(pid,'work',{compact:true,id:'f'})}</div><div class="vs">⇆</div>
+      <div class="cmp"><h5>🍳 料理模式</h5>${planSVG(pid,'cook',{compact:true,id:'f'})}</div></div></div>
+  <div class="actions"><button class="btn" id="saveBtn">♡ 儲存這個方案</button><button class="btn ghost" id="printBtn">列印 / 儲存 PDF</button><button class="btn ghost" id="bookBtn">預約門市諮詢</button></div>
+  ${nav(4,0)}`;
+}
+
+function render(scroll){
+  renderTabs();
+  disposeThree();
+  $('#panel').innerHTML=[step1,step2,step3,step4,step5][state.step-1]();
+  if(state.step===4)initThree();
+  if(scroll)$('#journey').scrollIntoView({behavior:'smooth'});
+}
+function go(n){
+  n=+n;if(n<1||n>5)return;
+  if(n>1&&!state.sel.length)return;
+  if(n===4&&state.maxStep<4)state.proposal=null;
+  state.step=n;state.maxStep=Math.max(state.maxStep,n);render(true);
+}
+function refreshPlan(){
+  const a=$('#planArea');if(a)a.innerHTML=planArea();
+  document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('on',b.dataset.mode===state.mode));
+  $('#cmpBtn')&&$('#cmpBtn').classList.toggle('on',state.compare);
+  const tip=document.querySelector('.three-tip');if(tip)tip.textContent='🖱 拖曳旋轉・目前：'+MODES[state.mode];
+  buildScene();
+}
+
+/* ================= EVENTS ================= */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button,[data-scen]');if(!t)return;
+  const d=t.dataset;
+  if(d.go){go(d.go);return}
+  if(d.up||d.down){
+    e.stopPropagation();const id=d.up||d.down,i=state.sel.indexOf(id),j=d.up?i-1:i+1;
+    [state.sel[i],state.sel[j]]=[state.sel[j],state.sel[i]];render();return;
+  }
+  if(d.scen){const i=state.sel.indexOf(d.scen);i>-1?state.sel.splice(i,1):state.sel.push(d.scen);render();return}
+  if(d.prob){const i=state.problems.indexOf(d.prob);i>-1?state.problems.splice(i,1):state.problems.push(d.prob);t.classList.toggle('on');return}
+  if(d.prop){state.proposal=d.prop;state.zoom=1;render();return}
+  if(d.mode){state.mode=d.mode;state.compare=false;refreshPlan();return}
+  if(t.id==='cmpBtn'){state.compare=!state.compare;refreshPlan();return}
+  if(d.zoom){state.zoom=d.zoom==='0'?1:Math.min(1.8,Math.max(.7,state.zoom+(d.zoom==='+'?.15:-.15)));const z=$('#planZoom');if(z)z.style.transform=`scale(${state.zoom})`;return}
+  if(d.view){state.view3d=d.view;document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('on',b===t));state.dist=d.view==='local'?6:11;const r=$('#zoom3d');if(r)r.value=21-state.dist;aimCamera();return}
+  if(t.id==='saveBtn'){saved++;try{localStorage.setItem('noir_saved',saved)}catch(e){}$('#planCount').textContent=saved;toast('已儲存到「我的方案」');return}
+  if(t.id==='printBtn'){window.print();return}
+  if(t.id==='bookBtn'){openModal();return}
+  if(t.id==='myPlanBtn'){if(state.maxStep>=5){state.step=5;render(true)}else{toast(saved?`已儲存 ${saved} 個方案，完成流程即可查看`:'完成 5 個步驟就能儲存你的方案');$('#journey').scrollIntoView({behavior:'smooth'})}return}
+  if(t.id==='mClose'){closeModal();return}
+});
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.dataset&&e.target.dataset.scen){e.preventDefault();e.target.click()}
+  if(e.key==='Escape')closeModal();
+});
+document.addEventListener('input',e=>{
+  const id=e.target.id,v=e.target.value;
+  if(id==='f-days'){state.workDays=+v;$('#v-days').textContent=v+' 天'}
+  if(id==='f-hours'){state.hours=+v;$('#v-hours').textContent=v+' 小時'}
+  if(id==='zoom3d'){state.dist=21-(+v);aimCamera()}
+});
+document.addEventListener('change',e=>{
+  const id=e.target.id,v=e.target.value;
+  const map={'f-area':'area','f-layout':'layout','f-cook':'cooking','f-style':'style'};
+  if(map[id])state[map[id]]=v;
+  if(id==='f-file'){state.file=e.target.files[0]?e.target.files[0].name:'';render()}
+});
+
+/* modal */
+function openModal(){
+  const d=new Date();d.setDate(d.getDate()+3);
+  $('#mBody').innerHTML=`<p class="note">此為前端展示表單，不會送出到門市或儲存資料。</p>
+    <form id="bookForm"><label for="b-name">稱呼</label><input id="b-name" required placeholder="如何稱呼您">
+    <label for="b-mail">電子郵件</label><input id="b-mail" type="email" required placeholder="hello@example.com">
+    <label for="b-date">希望諮詢日期</label><input id="b-date" type="date" required value="${d.toISOString().slice(0,10)}">
+    <button class="btn" type="submit">建立示範預約</button></form>`;
+  $('#modal').classList.add('show');$('#b-name').focus();
+  $('#bookForm').addEventListener('submit',ev=>{ev.preventDefault();
+    const n=esc($('#b-name').value),dt=esc($('#b-date').value),P=PROPOSALS[state.proposal||'island'];
+    $('#mBody').innerHTML=`<div class="done-msg"><p style="font-size:44px;margin:10px 0">✓</p><b>示範預約已建立</b>
+      <p>${n} 您好，已為您保留 ${dt} 的門市諮詢。<br>到店時店員會依您的「${P.name}」方案卡接續服務。</p>
+      <button class="btn" id="mClose">完成</button></div>`;});
+}
+function closeModal(){$('#modal').classList.remove('show')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+
+/* ================= 3D ================= */
+let R=null;
+function disposeThree(){if(R){cancelAnimationFrame(R.raf);R.ro&&R.ro.disconnect();R.renderer.dispose();R=null}}
+function initThree(){
+  const wrap=$('#threeWrap');if(!wrap)return;
+  if(typeof THREE==='undefined'){wrap.insertAdjacentHTML('beforeend','<div class="three-fallback">3D 模型需要網路連線載入 three.js，請連線後重新整理頁面。</div>');return}
+  const renderer=new THREE.WebGLRenderer({antialias:true});
+  renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));
+  renderer.shadowMap.enabled=true;
+  wrap.prepend(renderer.domElement);
+  const scene=new THREE.Scene();scene.background=new THREE.Color(0x101213);
+  const camera=new THREE.PerspectiveCamera(45,1,.1,100);
+  const group=new THREE.Group();scene.add(group);
+  scene.add(new THREE.AmbientLight(0xffffff,.55));
+  const dir=new THREE.DirectionalLight(0xffffff,.55);dir.position.set(-4,8,6);dir.castShadow=true;dir.shadow.mapSize.set(1024,1024);
+  Object.assign(dir.shadow.camera,{left:-7,right:7,top:7,bottom:-7});scene.add(dir);
+  const point=new THREE.PointLight(0xffffff,.9,12);point.position.set(0,2.6,0);scene.add(point);
+  R={renderer,scene,camera,group,point,wrap,theta:-.6,phi:1.0,target:new THREE.Vector3(0,.6,0),cur:new THREE.Vector3(0,.6,0),curDist:state.dist,raf:0};
+  const resize=()=>{const w=wrap.clientWidth,h=wrap.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix()};
+  resize();R.ro=new ResizeObserver(resize);R.ro.observe(wrap);
+  let drag=null;
+  wrap.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};wrap.setPointerCapture(e.pointerId)});
+  wrap.addEventListener('pointermove',e=>{if(!drag||!R)return;R.theta-=(e.clientX-drag.x)*.008;R.phi=Math.min(1.45,Math.max(.25,R.phi-(e.clientY-drag.y)*.006));drag={x:e.clientX,y:e.clientY}});
+  wrap.addEventListener('pointerup',()=>drag=null);
+  wrap.addEventListener('wheel',e=>{e.preventDefault();state.dist=Math.min(16,Math.max(5,state.dist+e.deltaY*.01));const r=$('#zoom3d');if(r)r.value=21-state.dist},{passive:false});
+  buildScene();aimCamera();
+  const loop=()=>{if(!R)return;R.cur.lerp(R.target,.12);R.curDist+=(state.dist-R.curDist)*.12;
+    const c=R.camera;c.position.set(R.cur.x+R.curDist*Math.sin(R.phi)*Math.sin(R.theta),R.cur.y+R.curDist*Math.cos(R.phi),R.cur.z+R.curDist*Math.sin(R.phi)*Math.cos(R.theta));
+    c.lookAt(R.cur);R.renderer.render(R.scene,c);R.raf=requestAnimationFrame(loop)};
+  loop();
+}
+function aimCamera(){
+  if(!R)return;
+  if(state.view3d==='local'){const f=zonesFor(state.proposal,state.mode).find(z=>z.cat==='flex')||zonesFor(state.proposal,state.mode).find(z=>ACTIVE[state.mode].includes(z.cat)&&!TOP.includes(z));
+    const c=to3(f.x+f.w/2,f.y+f.h/2);R.target.set(c.x,.7,c.z)}
+  else R.target.set(0,.6,0);
+}
+const to3=(x,y)=>({x:(x-300)/50,z:(y-182)/50});
+function mat(hex,dim){const c=new THREE.Color(hex);if(dim)c.lerp(new THREE.Color(0x1a1d1e),.55);return new THREE.MeshStandardMaterial({color:c,roughness:.75})}
+function box(w,h,d,m,x,y,z){const g=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);g.position.set(x,y,z);g.castShadow=g.receiveShadow=true;R.group.add(g);return g}
+function cyl(r,h,m,x,y,z){const g=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,24),m);g.position.set(x,y,z);g.castShadow=true;R.group.add(g);return g}
+function buildScene(){
+  if(!R)return;
+  while(R.group.children.length){const o=R.group.children.pop();o.geometry&&o.geometry.dispose()}
+  const pid=state.proposal,mode=state.mode,act=ACTIVE[mode],P=PLANS[pid];
+  box(9.6,.06,5.7,mat(0x6d5f4f),0,-.03,0);
+  box(9.6,2.6,.1,mat(0x2f3536),0,1.3,-2.9);
+  box(.1,2.6,5.7,mat(0x2a3031),-4.85,1.3,0);
+  box(.1,.08,5.7,mat(0xd9c7a5),4.8,.04,0);box(9.6,.08,.1,mat(0xd9c7a5),0,.04,2.85);
+  zonesFor(pid,mode).forEach(z=>{
+    const cat=z.cat==='flex'?z.flexCat:z.cat,on=act.includes(z.cat)||act.includes(cat);
+    const c=to3(z.x+z.w/2,z.y+z.h/2),W=z.w/50-.06,D=z.h/50-.06,m=mat(CAT_COLOR[cat],!on);
+    let H=.9;
+    if(z.tall)H=2.0;
+    else if(z.cat==='flex')H=mode==='cook'?.9:.75;
+    else if(cat==='dine'||cat==='work')H=.75;
+    const isTable=(z.cat==='flex'&&mode!=='cook')||cat==='dine'||cat==='work';
+    if(isTable){
+      box(W,.06,D,mat(on?0xe8dcc6:0x6b6458,!on),c.x,H-.03,c.z);
+      [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>box(.07,H-.06,.07,m,c.x+a*(W/2-.1),(H-.06)/2,c.z+b*(D/2-.1)));
+    }else{
+      box(W,H,D,m,c.x,H/2,c.z);
+      box(W+.04,.04,D+.04,mat(0xe8dcc6,!on),c.x,H+.02,c.z);
+    }
+    if(on&&mode==='work'&&(z.cat==='flex'||cat==='work')){
+      box(.5,.03,.34,mat(0x222222),c.x-.3,H+.015,c.z);box(.5,.32,.02,mat(0x9fb4bd),c.x-.3,H+.18,c.z-.17);
+      box(.6,.38,.04,mat(0x111111),c.x+.4,H+.25,c.z-.15);
+    }
+    if(on&&mode==='cook'){
+      if(z.key==='stove')cyl(.22,.22,mat(0x9a9a9a),c.x,H+.13,c.z);
+      if(z.cat==='flex'||(cat==='cook'&&z.label==='中島料理台')){box(.5,.03,.32,mat(0xc89b62),c.x,H+.03,c.z);cyl(.12,.08,mat(0xd96b4b),c.x+.5,H+.05,c.z)}
+    }
+    if(on&&mode==='party'&&(z.cat==='flex'||cat==='dine')){
+      const n=Math.max(2,Math.round(W/.6));for(let i=0;i<n;i++){const px=c.x-W/2+(i+.5)*W/n;cyl(.13,.02,mat(0xf4f1ea),px,H+.02,c.z-D/4);cyl(.13,.02,mat(0xf4f1ea),px,H+.02,c.z+D/4)}
+    }
+  });
+  (P.chairs[mode]||[]).forEach(([x,y])=>{const c=to3(x,y);box(.36,.06,.36,mat(0x3a3f40),c.x,.45,c.z);[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>box(.04,.45,.04,mat(0x2a2e2f),c.x+a*.15,.225,c.z+b*.15))});
+  if(P.partition){
+    const gm=new THREE.MeshStandardMaterial({color:0x9fc3cf,transparent:true,opacity:.28});
+    const px=to3(332,0).x;
+    if(mode==='party'){box(.05,2.2,1.2,gm,px,1.1,to3(0,140).z);box(.05,2.2,1.0,gm,px,1.1,to3(0,296).z)}
+    else box(.05,2.2,4.2,gm,px,1.1,to3(0,216).z);
+  }
+  const fz=zonesFor(pid,mode).find(z=>z.cat==='flex');const lc=fz?to3(fz.x+fz.w/2,fz.y+fz.h/2):{x:0,z:0};
+  R.point.position.set(lc.x,2.4,lc.z);R.point.color.set({work:0xeef2ff,cook:0xffe3b8,party:0xffb866}[mode]);
+  [-.6,.6].forEach(o=>{cyl(.005,.6,mat(0x222222),lc.x+o,2.3,lc.z);const sh=new THREE.Mesh(new THREE.ConeGeometry(.2,.2,24,1,true),new THREE.MeshStandardMaterial({color:0xd7d2c6,emissive:{work:0x999999,cook:0x99805a,party:0xaa6a2a}[mode],side:THREE.DoubleSide}));sh.position.set(lc.x+o,1.95,lc.z);R.group.add(sh)});
+  aimCamera();
+}
+
+/* init */
+$('#planCount').textContent=saved;
+render(false);
+</script>
+</body>
+</html>

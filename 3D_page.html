@@ -8,7 +8,7 @@ const mats={floor:0xc2b29b,wall:0xe2d8c8,wood:0x7d5840,dark:0x373b3d,sofa:0xc7be
 function box(x,y,z,w,h,d,color,group=house){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color));mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;group.add(mesh);return mesh}
 function wall(x,z,w,d,h=2.5){const mesh=box(x,h/2,z,w,h,d,mats.wall);wallMeshes.push(mesh);return mesh}
 function label(text,x,z){const c=document.createElement('canvas');c.width=512;c.height=128;const ctx=c.getContext('2d');ctx.fillStyle='rgba(24,29,34,.9)';ctx.roundRect(5,5,502,118,20);ctx.fill();ctx.fillStyle='#e9d3b0';ctx.font='bold 42px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,256,65);const t=new THREE.CanvasTexture(c);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false}));s.position.set(x,3,z);s.scale.set(2.3,.57,1);house.add(s);labels.push(s)}
-// 12m × 8m conceptual layout
+// 12m × 8m conceptual layout 
 box(0,-.2,0,12,.4,8,mats.floor);box(0,-.43,0,12.5,.07,8.5,0x55565a);
 wall(-6,0,.16,8);wall(6,0,.16,8);wall(0,-4,12,.16);wall(0,4,12,.16);
 // Left living / kitchen; right bedrooms and bathroom. Open gaps represent doors.
